@@ -6,8 +6,8 @@ add volumeswitcher project
 ~~add switching of default playback device~~  
 ~~add switching of default capture device~~  
 ~~add showing of current volume on tray icon~~  
-~~add OSD for volume~~ 
-~~add OSD for balance~~ 
+~~add OSD for volume~~  
+~~add OSD for balance~~  
 add option to right click menu to open Volume mixer and Playback devices 
 play "ding" when clicked on volume trackbar  
 
@@ -25,6 +25,8 @@ add settings to:
  - ~~make it possible to set maximum volume~~
  - ~~show or hide OSD when volume is being changed~~ 
  - change behaviour of double click on notification icon
- 
+
+bugs:  
+OSD thingy can move outside rectangle  
 
 investigate tooltip on trackbar - no  
