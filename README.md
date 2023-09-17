@@ -8,7 +8,7 @@ add volumeswitcher project
 ~~add showing of current volume on tray icon~~  
 ~~add OSD for volume~~  
 ~~add OSD for balance~~  
-add option to right click menu to open Volume mixer and Playback devices 
+add option to right click menu to open Volume mixer and Playback devices  
 play "ding" when clicked on volume trackbar  
 
 playback devices cmd: "C:\WINDOWS\system32\rundll32.exe" shell32.dll,Control_RunDLL mmsys.cpl,,playback
