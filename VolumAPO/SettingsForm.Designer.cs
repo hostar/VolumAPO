@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Models.Hotkey hotkey5 = new Models.Hotkey();
-            Models.Hotkey hotkey6 = new Models.Hotkey();
-            Models.Hotkey hotkey7 = new Models.Hotkey();
-            Models.Hotkey hotkey8 = new Models.Hotkey();
+            Models.Hotkey hotkey1 = new Models.Hotkey();
+            Models.Hotkey hotkey2 = new Models.Hotkey();
+            Models.Hotkey hotkey3 = new Models.Hotkey();
+            Models.Hotkey hotkey4 = new Models.Hotkey();
             btnSaveConfig = new Button();
             toolTipVolSteps = new ToolTip(components);
             tabControlSettings = new TabControl();
@@ -127,6 +127,7 @@
             checkBoxTaskBarScroll.TabIndex = 21;
             checkBoxTaskBarScroll.Text = "check to enable";
             checkBoxTaskBarScroll.UseVisualStyleBackColor = true;
+            checkBoxTaskBarScroll.CheckedChanged += checkBoxTaskBarScroll_CheckedChanged;
             // 
             // label9
             // 
@@ -182,6 +183,7 @@
             trackBarVolumeSpeed.TabIndex = 15;
             trackBarVolumeSpeed.TickStyle = TickStyle.TopLeft;
             trackBarVolumeSpeed.Value = 1;
+            trackBarVolumeSpeed.ValueChanged += trackBarVolumeSpeed_ValueChanged;
             // 
             // label5
             // 
@@ -223,18 +225,19 @@
             // 
             hotkeyBalanceRight.BackColor = Color.White;
             hotkeyBalanceRight.ExternalConflictFlag = false;
-            hotkey5.Alt = false;
-            hotkey5.Control = false;
-            hotkey5.Key = 0;
-            hotkey5.Shift = false;
-            hotkey5.Win = false;
-            hotkeyBalanceRight.Hotkey = hotkey5;
+            hotkey1.Alt = false;
+            hotkey1.Control = false;
+            hotkey1.Key = 0;
+            hotkey1.Shift = false;
+            hotkey1.Win = false;
+            hotkeyBalanceRight.Hotkey = hotkey1;
             hotkeyBalanceRight.Location = new Point(126, 121);
             hotkeyBalanceRight.Name = "hotkeyBalanceRight";
             hotkeyBalanceRight.RequireModifier = true;
             hotkeyBalanceRight.Size = new Size(188, 27);
             hotkeyBalanceRight.TabIndex = 14;
             hotkeyBalanceRight.Text = "None";
+            hotkeyBalanceRight.TextChanged += hotkeyBalanceRight_OnHotkeyChanged;
             // 
             // label3
             // 
@@ -249,18 +252,19 @@
             // 
             hotkeyBalanceLeft.BackColor = Color.White;
             hotkeyBalanceLeft.ExternalConflictFlag = false;
-            hotkey6.Alt = false;
-            hotkey6.Control = false;
-            hotkey6.Key = 0;
-            hotkey6.Shift = false;
-            hotkey6.Win = false;
-            hotkeyBalanceLeft.Hotkey = hotkey6;
+            hotkey2.Alt = false;
+            hotkey2.Control = false;
+            hotkey2.Key = 0;
+            hotkey2.Shift = false;
+            hotkey2.Win = false;
+            hotkeyBalanceLeft.Hotkey = hotkey2;
             hotkeyBalanceLeft.Location = new Point(126, 88);
             hotkeyBalanceLeft.Name = "hotkeyBalanceLeft";
             hotkeyBalanceLeft.RequireModifier = true;
             hotkeyBalanceLeft.Size = new Size(188, 27);
             hotkeyBalanceLeft.TabIndex = 12;
             hotkeyBalanceLeft.Text = "None";
+            hotkeyBalanceLeft.TextChanged += hotkeyBalanceLeft_OnHotkeyChanged;
             // 
             // label2
             // 
@@ -275,18 +279,19 @@
             // 
             hotkeyVolumeDown.BackColor = Color.White;
             hotkeyVolumeDown.ExternalConflictFlag = false;
-            hotkey7.Alt = false;
-            hotkey7.Control = false;
-            hotkey7.Key = 0;
-            hotkey7.Shift = false;
-            hotkey7.Win = false;
-            hotkeyVolumeDown.Hotkey = hotkey7;
+            hotkey3.Alt = false;
+            hotkey3.Control = false;
+            hotkey3.Key = 0;
+            hotkey3.Shift = false;
+            hotkey3.Win = false;
+            hotkeyVolumeDown.Hotkey = hotkey3;
             hotkeyVolumeDown.Location = new Point(126, 55);
             hotkeyVolumeDown.Name = "hotkeyVolumeDown";
             hotkeyVolumeDown.RequireModifier = true;
             hotkeyVolumeDown.Size = new Size(188, 27);
             hotkeyVolumeDown.TabIndex = 10;
             hotkeyVolumeDown.Text = "None";
+            hotkeyVolumeDown.TextChanged += hotkeyVolumeDown_OnHotkeyChanged;
             // 
             // label1
             // 
@@ -301,18 +306,19 @@
             // 
             hotkeyVolumeUp.BackColor = Color.White;
             hotkeyVolumeUp.ExternalConflictFlag = false;
-            hotkey8.Alt = false;
-            hotkey8.Control = false;
-            hotkey8.Key = 0;
-            hotkey8.Shift = false;
-            hotkey8.Win = false;
-            hotkeyVolumeUp.Hotkey = hotkey8;
+            hotkey4.Alt = false;
+            hotkey4.Control = false;
+            hotkey4.Key = 0;
+            hotkey4.Shift = false;
+            hotkey4.Win = false;
+            hotkeyVolumeUp.Hotkey = hotkey4;
             hotkeyVolumeUp.Location = new Point(126, 22);
             hotkeyVolumeUp.Name = "hotkeyVolumeUp";
             hotkeyVolumeUp.RequireModifier = true;
             hotkeyVolumeUp.Size = new Size(188, 27);
             hotkeyVolumeUp.TabIndex = 8;
             hotkeyVolumeUp.Text = "None";
+            hotkeyVolumeUp.TextChanged += hotkeyVolumeUp_OnHotkeyChanged;
             // 
             // tabPageOsd
             // 
