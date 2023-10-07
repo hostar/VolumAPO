@@ -31,7 +31,17 @@ namespace VolumAPO.Helpers
                 await rightClickMenuHelper.UpdateDefaultDeviceByGuid(value.Device.Id, value.Device.DeviceType);
                 try
                 {
-                    GlobalHelpers.CurrentDeviceChannels = value.Device.ChannelCount;
+                    if (value.Device != null)
+                    {
+                        try
+                        {
+                            GlobalHelpers.CurrentDeviceChannels = value.Device.ChannelCount;
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
                 }
                 catch (Exception ex) { }
             }

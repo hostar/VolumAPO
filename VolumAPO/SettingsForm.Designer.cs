@@ -237,7 +237,7 @@
             hotkeyBalanceRight.Size = new Size(188, 27);
             hotkeyBalanceRight.TabIndex = 14;
             hotkeyBalanceRight.Text = "None";
-            hotkeyBalanceRight.TextChanged += hotkeyBalanceRight_OnHotkeyChanged;
+            hotkeyBalanceRight.OnHotkeyChanged += hotkeyBalanceRight_OnHotkeyChanged;
             // 
             // label3
             // 
@@ -264,7 +264,7 @@
             hotkeyBalanceLeft.Size = new Size(188, 27);
             hotkeyBalanceLeft.TabIndex = 12;
             hotkeyBalanceLeft.Text = "None";
-            hotkeyBalanceLeft.TextChanged += hotkeyBalanceLeft_OnHotkeyChanged;
+            hotkeyBalanceLeft.OnHotkeyChanged += hotkeyBalanceLeft_OnHotkeyChanged;
             // 
             // label2
             // 
@@ -291,7 +291,7 @@
             hotkeyVolumeDown.Size = new Size(188, 27);
             hotkeyVolumeDown.TabIndex = 10;
             hotkeyVolumeDown.Text = "None";
-            hotkeyVolumeDown.TextChanged += hotkeyVolumeDown_OnHotkeyChanged;
+            hotkeyVolumeDown.OnHotkeyChanged += hotkeyVolumeDown_OnHotkeyChanged;
             // 
             // label1
             // 
@@ -318,7 +318,7 @@
             hotkeyVolumeUp.Size = new Size(188, 27);
             hotkeyVolumeUp.TabIndex = 8;
             hotkeyVolumeUp.Text = "None";
-            hotkeyVolumeUp.TextChanged += hotkeyVolumeUp_OnHotkeyChanged;
+            hotkeyVolumeUp.OnHotkeyChanged += hotkeyVolumeUp_OnHotkeyChanged;
             // 
             // tabPageOsd
             // 

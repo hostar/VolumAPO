@@ -74,7 +74,7 @@ namespace VolumAPO
 
         private void SetHotkey(object sender, HotkeyEnum hotkeyId)
         {
-            var hotkey = ((HotkeyInputBox)(sender)).Hotkey;
+            var hotkey = ((HotkeyInputBox)sender).Hotkey;
 
             GlobalHelpers.SetHotkey(volumeControlForm.Handle, hotkey, hotkeyId);
         }

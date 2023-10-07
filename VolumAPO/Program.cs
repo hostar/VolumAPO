@@ -12,8 +12,10 @@ using System.Drawing.Design;
 
 namespace VolumAPO
 {
-    internal class Program
+    public class Program
     {
+        public bool ExitNow { get; set; } = false;
+
         NotifyIcon notifyIcon;
 
         OSDForm osdForm;
@@ -22,14 +24,10 @@ namespace VolumAPO
 
         public Program()
         {
-            if (File.Exists(Config.ConfigFileName))
-            {
-                Config.ConfigAccessor = JsonSerializer.Deserialize<Config>(File.ReadAllText(Config.ConfigFileName));
-            }
-
             if (GlobalHelpers.CoreAudioControllerGlobal.DefaultPlaybackDevice == null)
             {
                 MessageBox.Show("Windows sound service seems to be down. Please enable it first using: net start audiosrv . Exiting...");
+                ExitNow = true;
                 return;
             }
 
@@ -48,6 +46,11 @@ namespace VolumAPO
             GlobalHelpers.osdForm = osdForm;
 
             GlobalHelpers.SetInitialConfiguration(volumeControlForm.Handle);
+            if (File.Exists(Config.ConfigFileName))
+            {
+                Config.ConfigAccessor = JsonSerializer.Deserialize<Config>(File.ReadAllText(Config.ConfigFileName));
+            }
+
             GlobalHelpers.PopulateControls(settingsForm);
 
             CreateRightClickMenu();
@@ -92,6 +95,11 @@ namespace VolumAPO
             ApplicationConfiguration.Initialize();
 
             var program = new Program();
+
+            if (program.ExitNow)
+            {
+                return;
+            }
 
             Application.Run();
         }

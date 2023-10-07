@@ -22,7 +22,7 @@ namespace VolumAPO.Internals
                 ? stringBuilder.ToString()
                 : string.Empty;
 
-            Debug.Print(className);
+            //Debug.Print(className);
 
             return classNames.Contains(className);
         }

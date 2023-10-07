@@ -33,6 +33,9 @@ namespace VolumAPO.Helpers
         public static int CurrentDeviceChannels = -1;
 
         public static string ApoGuid = "656BCCDE-BAD1-4BEF-960A-1FD82B332258";
+
+        public static IntPtr VolumeControlFormHandle = IntPtr.Zero;
+
         public static int CurrentVolume
         {
             get
@@ -107,10 +110,11 @@ namespace VolumAPO.Helpers
 
         public static void SetInitialConfiguration(IntPtr handle)
         {
-            SetHotkey(handle, Config.ConfigAccessor.VolumeUpHotkey, HotkeyEnum.VolumeUp);
-            SetHotkey(handle, Config.ConfigAccessor.VolumeDownHotkey, HotkeyEnum.VolumeDown);
-            SetHotkey(handle, Config.ConfigAccessor.BalanceRightHotkey, HotkeyEnum.BalanceRight);
-            SetHotkey(handle, Config.ConfigAccessor.BalanceLeftHotkey, HotkeyEnum.BalanceLeft);
+            VolumeControlFormHandle = handle;
+            SetHotkey(VolumeControlFormHandle, Config.ConfigAccessor.VolumeUpHotkey, HotkeyEnum.VolumeUp);
+            SetHotkey(VolumeControlFormHandle, Config.ConfigAccessor.VolumeDownHotkey, HotkeyEnum.VolumeDown);
+            SetHotkey(VolumeControlFormHandle, Config.ConfigAccessor.BalanceRightHotkey, HotkeyEnum.BalanceRight);
+            SetHotkey(VolumeControlFormHandle, Config.ConfigAccessor.BalanceLeftHotkey, HotkeyEnum.BalanceLeft);
             SetWheelTaskbar();
         }
 
