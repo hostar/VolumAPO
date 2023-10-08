@@ -90,7 +90,7 @@ STDAPI DllUnregisterServer()
 	return hr;
 }
 
-const wchar_t* DllRegTakeOwnership(const wchar_t* key, const wchar_t* name, const wchar_t* value)
+const wchar_t* DllRegTakeOwnership(const wchar_t* key, const wchar_t* name, const wchar_t* value, bool writeAsMultiSz)
 {
 	int result = 0;
 	wstring msg;
@@ -116,7 +116,14 @@ const wchar_t* DllRegTakeOwnership(const wchar_t* key, const wchar_t* name, cons
 
 	try
 	{
-		RegistryHelper::writeValue(key, name, value);
+		if (writeAsMultiSz)
+		{
+			RegistryHelper::writeMultiValue(key, name, value);
+		}
+		else
+		{
+			RegistryHelper::writeValue(key, name, value);
+		}
 	}
 	catch (RegistryException e)
 	{

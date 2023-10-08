@@ -18,7 +18,7 @@ namespace VolumAPO.Helpers
     public static class GlobalHelpers
     {
         [DllImport("VolumAPONative.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-        static extern IntPtr DllRegTakeOwnership(string key, string nameToWrite, string valueToWrite);
+        static extern IntPtr DllRegTakeOwnership(string key, string nameToWrite, string valueToWrite, bool writeAsMultiSz);
 
 
         private static int _currValue = 0;
@@ -352,18 +352,11 @@ namespace VolumAPO.Helpers
                 {
                     var registryPath = $"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\MMDevices\\Audio\\Render\\{{{CoreAudioControllerGlobal.DefaultPlaybackDevice.Id}}}\\FxProperties";
 
-                    //IntPtr lpBuffer = Marshal.AllocHGlobal(50);
-                    StringBuilder sb = new StringBuilder(500);
+                    List<string> regNames = new List<string>() { "{d04e05a6-594b-4fb6-a80d-01af5eed7d1d},5", "{d04e05a6-594b-4fb6-a80d-01af5eed7d1d},7" };
+                    TakeOwnerShipAndWrite(registryPath, regNames, $"{{{ApoGuid}}}");
 
-                    var res = DllRegTakeOwnership(registryPath, "{d04e05a6-594b-4fb6-a80d-01af5eed7d1d},5", $"{{{ApoGuid}}}");
-                    var res2 = Marshal.PtrToStringUni(res);
-
-                    Marshal.FreeCoTaskMem(res);
-
-                    if (res2 != string.Empty)
-                    {
-                        throw new InvalidOperationException($"Error when writing to the FxProperties registry: {res2}");
-                    }
+                    regNames = new List<string>() { "{d3993a3f-99c2-4402-b5ec-a92a0367664b},5", "{d3993a3f-99c2-4402-b5ec-a92a0367664b},7" };
+                    TakeOwnerShipAndWrite(registryPath, regNames, $"{{C18E2F7E-933D-4965-B7D1-1EEF228D2AF3}}", true);
                 }
                 catch (Exception ex)
                 {
@@ -394,6 +387,22 @@ namespace VolumAPO.Helpers
 
                     System.Windows.Forms.MessageBox.Show($"APO installation successful, please restart computer to apply the effect.");
                     Config.ConfigAccessor.UseApoForBalance = true;
+                }
+            }
+        }
+
+        private static void TakeOwnerShipAndWrite(string registryPath, List<string> regNames, string regValue, bool writeAsMultiSz = false)
+        {
+            foreach (string item in regNames)
+            {
+                var res = DllRegTakeOwnership(registryPath, item, regValue, writeAsMultiSz);
+                var res2 = Marshal.PtrToStringUni(res);
+
+                Marshal.FreeCoTaskMem(res);
+
+                if (res2 != string.Empty)
+                {
+                    throw new InvalidOperationException($"Error when writing to the FxProperties registry: {res2}");
                 }
             }
         }
